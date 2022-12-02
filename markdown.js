@@ -4,7 +4,7 @@ showdownScript.src='https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.mi
 var scriptNode=document.querySelector('script[data-name=markdown]')
 scriptNode.insertAdjacentElement('afterend',showdownScript)
 
-addEventListener('DOMContentLoaded',setupMarkdownViewers)
+addEventListener('load',setupMarkdownViewers)
 
 function setupMarkdownViewers(){
 
