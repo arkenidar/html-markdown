@@ -1,7 +1,7 @@
 var showdownScript=document.createElement('script')
 showdownScript.src='https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js'
 
-var scriptNode=document.querySelector('script[data-name=markdown]')
+var scriptNode=document.currentScript//document.querySelector('script[data-name=markdown]')
 scriptNode.insertAdjacentElement('afterend',showdownScript)
 
 onload=setupMarkdownViewers
