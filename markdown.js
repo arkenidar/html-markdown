@@ -1,7 +1,10 @@
 var showdownScript=document.createElement('script')
-showdownScript.src='https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js'
+///showdownScript.src='https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js'
+showdownScript.src='https://arkenidar.com/app/lib/html-markdown/showdown.min.js'
 
-var scriptNode=document.currentScript//document.querySelector('script[data-name=markdown]')
+var scriptNode
+scriptNode=document.currentScript
+//scriptNode=document.querySelector('script[data-name=markdown]')
 scriptNode.insertAdjacentElement('afterend',showdownScript)
 
 addEventListener('load',setupMarkdownViewers)
