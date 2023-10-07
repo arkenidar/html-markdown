@@ -14,7 +14,10 @@ function setupMarkdownViewers(){
 	var showdownConverter = new showdown.Converter()
 
 	function viewContent(content,node){
-		node.innerHTML=showdownConverter.makeHtml(content)
+		node.insertAdjacentElement('afterend', document.createElement("div") )
+		node.style.display = "none"
+		var newNode = node.nextSibling
+		newNode.innerHTML=showdownConverter.makeHtml(content)
 	}
 
 	for(var node of document.querySelectorAll('.markdown-inline')){
