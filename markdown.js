@@ -4,7 +4,6 @@ showdownScript.src='https://arkenidar.com/app/lib/html-markdown/showdown.min.js'
 
 var scriptNode
 scriptNode=document.currentScript
-//scriptNode=document.querySelector('script[data-name=markdown]')
 scriptNode.insertAdjacentElement('afterend',showdownScript)
 
 addEventListener('load',setupMarkdownViewers)
