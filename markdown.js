@@ -19,7 +19,14 @@ function setupMarkdownViewers() {
     }
 
     // Now we can use showdown
-    var showdownConverter = new showdown.Converter()
+    // note: init showdown converter with options if needed
+    // ref: https://github.com/showdownjs/showdown
+    var showdownConverter = new showdown.Converter({
+        tables: true,
+        simplifiedAutoLink: true,
+        strikethrough: true,
+        tasklists: true
+    })
 
     function viewContent(content, node) {
         node.insertAdjacentElement('afterend', document.createElement("div"))
