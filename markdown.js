@@ -18,36 +18,49 @@ function setupMarkdownViewers() {
         return
     }
 
-    // Now we can use showdown
-    // note: init showdown converter with options if needed
-    // ref: https://github.com/showdownjs/showdown
-    var showdownConverter = new showdown.Converter({
-        tables: true,
-        simplifiedAutoLink: true,
-        strikethrough: true,
-        tasklists: true
-    })
-
-    function viewContent(content, node) {
-        node.insertAdjacentElement('afterend', document.createElement("div"))
-        node.style.display = "none"
-        var newNode = node.nextSibling
-        newNode.innerHTML = showdownConverter.makeHtml(content)
+    // Wait for DOM to be ready before processing markdown elements
+    // This prevents a race condition where the script might execute before
+    // all .markdown-inline and .markdown-url elements have been parsed
+    if (document.readyState === 'loading') {
+        // DOM still loading - wait for DOMContentLoaded event
+        document.addEventListener('DOMContentLoaded', processMarkdownElements)
+    } else {
+        // DOM already ready - process immediately
+        processMarkdownElements()
     }
 
-    for (var node of document.querySelectorAll('.markdown-inline')) {
-        node.style.whiteSpace = 'pre'
-        var markdown = node.innerText
-        node.style.whiteSpace = 'normal'
-        viewContent(markdown, node)
-    }
+    function processMarkdownElements() {
+        // Now we can use showdown
+        // note: init showdown converter with options if needed
+        // ref: https://github.com/showdownjs/showdown
+        var showdownConverter = new showdown.Converter({
+            tables: true,
+            simplifiedAutoLink: true,
+            strikethrough: true,
+            tasklists: true
+        })
 
-    function markdownContentFromURL(url, node) {
-        fetch(url)
-            .then(response => response.text())
-            .then(text => viewContent(text, node))
-    }
+        function viewContent(content, node) {
+            node.insertAdjacentElement('afterend', document.createElement("div"))
+            node.style.display = "none"
+            var newNode = node.nextSibling
+            newNode.innerHTML = showdownConverter.makeHtml(content)
+        }
 
-    for (var node of document.querySelectorAll('.markdown-url'))
-        markdownContentFromURL(node.dataset.url, node)
+        for (var node of document.querySelectorAll('.markdown-inline')) {
+            node.style.whiteSpace = 'pre'
+            var markdown = node.innerText
+            node.style.whiteSpace = 'normal'
+            viewContent(markdown, node)
+        }
+
+        function markdownContentFromURL(url, node) {
+            fetch(url)
+                .then(response => response.text())
+                .then(text => viewContent(text, node))
+        }
+
+        for (var node of document.querySelectorAll('.markdown-url'))
+            markdownContentFromURL(node.dataset.url, node)
+    }
 }
