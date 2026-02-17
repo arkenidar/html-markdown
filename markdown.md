@@ -2,9 +2,9 @@
 
 paragraph
 
-[markdowntutorial.com: MarkDown Interactive Lessons](//markdowntutorial.com)
+[markdowntutorial.com: MarkDown Interactive Lessons](https://markdowntutorial.com)
 
-[showdownjs.com: MarkDown to HTML](//showdownjs.com)
+[showdownjs.com: MarkDown to HTML](https://github.com/showdownjs/showdown)
 
 _italic_ **bold** _**italic and bold**_
 
@@ -14,7 +14,7 @@ _italic_ **bold** _**italic and bold**_
 etc
 # a _**formatted**_ header
 
-a link example: [Search for it.](//www.google.com)
+a link example: [Search for it.](https://www.google.com)
 
 
 ## reference links
@@ -23,8 +23,8 @@ Do you want to [see something fun][a fun place]?
 
 Well, do I have [the website for you][another fun place]!
 
-[a fun place]: //www.zombo.com
-[another fun place]: //www.stumbleupon.com
+[a fun place]: https://www.zombo.com
+[another fun place]: https://www.stumbleupon.com
 
 ## images
 
