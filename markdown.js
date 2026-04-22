@@ -1,8 +1,11 @@
 var showdownScript = document.createElement("script");
 
 // When the script is loaded, set up the markdown viewers
-//// showdownScript.onload = setupMarkdownViewers
-showdownScript.onload = markdownContentLoaded;
+if (typeof markdownContentLoaded === "function") {
+  showdownScript.onload = markdownContentLoaded;
+} else {
+  showdownScript.onload = processMarkdownElements;
+}
 
 ///showdownScript.src = 'https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js'
 ///showdownScript.src = 'https://arkenidar.com/app/lib/html-markdown/showdown.min.js'
