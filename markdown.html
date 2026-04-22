@@ -15,6 +15,8 @@
 ## Mark-down view, _inline mode_ test
 
 paragraph
+
+paragraph with [link](about:blank)
 </pre>
 
     <hr>
@@ -23,28 +25,22 @@ paragraph
 
     <hr>
 
+    <script>
+
+        async function markdownContentLoaded() {
+            await processMarkdownElements()
+            postProcessMarkdownElements()
+        }
+
+        function postProcessMarkdownElements(){
+            document.querySelectorAll('.markdown-to-html a').forEach(_=>markdownLink(_))
+            function markdownLink(link){
+                console.info('link.href', link.href)
+            } 
+        }
+    
+    </script>
     <script src="markdown.js"></script>
-
-    <hr>
-
-    <div><a href="https://github.com/arkenidar/html-markdown" target="_blank">gh repository</a></div>
-    <div><a href="https://arkenidar.github.io/html-markdown/markdown.html" target="_blank">gh demonstration</a></div>
-
-    <hr>
-
-    <script src="https://arkenidar.com/web/show-source.js" data-href="markdown.js"></script>
-
-    <hr>
-
-    <script src="https://arkenidar.com/web/show-source.js" data-href="markdown.html"></script>
-
-    <hr>
-
-    <script src="https://arkenidar.com/web/show-source.js" data-href="markdown.md"></script>
-
-    <hr>
-
-    <div><a href=".">go to main page</a></div>
 
 </body>
 
