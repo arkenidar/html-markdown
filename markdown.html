@@ -1,14 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>markdown to HTML</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>markdown to HTML</h1>
 
     <pre class="markdown-inline">
@@ -17,31 +15,20 @@
 paragraph
 
 paragraph with [link](about:blank)
-</pre>
+</pre
+    >
 
-    <hr>
+    <hr />
 
     <div class="markdown-url" data-url="markdown.md"></div>
 
-    <hr>
+    <hr />
 
     <script>
-
-        async function markdownContentLoaded() {
-            await processMarkdownElements()
-            postProcessMarkdownElements()
-        }
-
-        function postProcessMarkdownElements(){
-            document.querySelectorAll('.markdown-to-html a').forEach(_=>markdownLink(_))
-            function markdownLink(link){
-                console.info('link.href', link.href)
-            } 
-        }
-    
+      async function markdownContentLoaded() {
+        await processMarkdownElements();
+      }
     </script>
     <script src="markdown.js"></script>
-
-</body>
-
+  </body>
 </html>
