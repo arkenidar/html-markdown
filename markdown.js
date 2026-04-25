@@ -42,9 +42,9 @@ async function processMarkdownElements() {
   }
 
   async function markdownContentFromURL(url, node) {
-    await fetch(url)
-      .then((response) => response.text())
-      .then((text) => viewContent(text, node));
+    const response = await fetch(url);
+    const text = await response.text();
+    viewContent(text, node);
   }
 
   for (var node of document.querySelectorAll(".markdown-url"))
